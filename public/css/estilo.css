@@ -1,0 +1,595 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Courgette&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(22, 4, 2);
+}
+
+:root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+header {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  border-bottom: 2px solid;
+  border-image-source: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37);
+  border-image-slice: 1;
+}
+
+#logo {
+  display: flex;
+}
+
+#logo_coroa {
+  height: 80px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  color: #ffd700;
+  gap: 30px;
+  font-size: 20px;
+}
+
+.logo_escrito {
+  font-size: 40px;
+  font-family: "Courgette", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+  /* efeido dourado na letra (deg = degrade vai em sentido diagonal*/
+  background: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37);
+  /* degrade e o texto ficam juntos */
+  -webkit-background-clip: text;
+  /* tira da cor da letra em si e permanece o degrade */
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  justify-content: end;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  width: 90px;
+  height: 30px;
+  border-style: none;
+  background-color: #ffd700;
+  color: rgb(22, 4, 2);
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transition: scale(1.3);
+  background-color: #cbb223;
+  color: white;
+  transform: translateY(-2px);
+}
+
+body::selection {
+  background-color: #ffd700;
+  color: black;
+}
+
+.titulo_principal img {
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.header a {
+  text-decoration: none;
+  color: #e3b062;
+  font-size: 16px;
+}
+
+.agora {
+  font-weight: 600;
+}
+
+.navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #e3b062;
+}
+
+
+/* coroa */
+.navbar img {
+  width: 60px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* BANNER */
+.banner {
+  height: var(--tamanho-banner);
+  color: white;
+  background-image: url('../assets/imgs/fundo/fundo_home.png');
+  background-size: cover;
+}
+
+.banner .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.titulo-container {
+  /* centralizar */
+  text-align: center;
+  /* fica grudado no cabeçalho */
+  margin: 0px;
+}
+
+.titulo {
+  font-size: 60px;
+  font-family: "Courgette", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+  /* efeido dourado na letra (deg = degrade vai em sentido diagonal*/
+  background: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37);
+  /* degrade e o texto ficam juntos */
+  -webkit-background-clip: text;
+  /* tira da cor da letra em si e permanece o degrade */
+  -webkit-text-fill-color: transparent;
+  /* brilho */
+  text-shadow: 0 0 5px #d4af37;
+
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.subtitulo {
+  font-size: 24px;
+  color: white;
+  margin-top: 10px;
+  text-shadow: 0 0 10px black;
+}
+
+.banner .container p {
+  width: 70%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/* MISSÃO VISÃO VALORES */
+
+.social {
+  display: flex;
+}
+
+.social .container {
+  justify-content: center;
+
+}
+
+.box img {
+  /* padroniza o tamanho da imagem */
+  width: 200px;
+  height: 300px;
+  /* não deixa distorcer a imagem */
+  object-fit: cover;
+  /* curva da borda */
+  border-radius: 15px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 10px #d4af37, 0 0 20px black;
+}
+
+.social .container .boxes {
+  display: flex;
+  width: 100%;
+  padding: 30px 0;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social p {
+  text-align: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  /* efeido dourado na letra (deg = degrade vai em sentido diagonal*/
+  background: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37);
+  /* degrade e o texto ficam juntos */
+  -webkit-background-clip: text;
+  /* tira da cor da letra em si e permanece o degrade */
+  -webkit-text-fill-color: transparent;
+}
+
+.box h4 {
+  /* aumentar a letra */
+  font-size: 30px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+
+  -webkit-text-stroke: 1.5px black;
+  text-shadow: 0 0 2px rgba(228, 224, 214, 0.7);
+}
+
+.box p {
+  margin-top: 5px;
+  text-shadow: 0 0 2px white;
+  font-size: 2px;
+}
+
+.historia {
+  display: flex;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: rgb(22, 4, 2);
+  height: 50px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+  border-top: 2px solid #ffd700;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+
+}
+
+.footer .container h4 {
+  color: white;
+  font-size: 20px;
+}
+
+
+/* HOME */
+
+.home {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.personagem {
+  margin: 30px;
+  width: 33%;
+  background-color: rgb(22, 4, 2);
+  border-radius: 20px;
+  padding: 10px;
+  border: 4px solid #ffd700;
+}
+
+.titulo-personagens p {
+  font-size: 600px;
+}
+
+
+
+/* cards da home */
+
+.titulo_criaturas {
+  margin: 30px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.titulo_criaturas h2 {
+  font-size: 40px;
+  font-family: "Courgette", cursive;
+  color: #ffd700;
+}
+
+.titulo_criaturas p {
+  font-size: 20px;
+  color: white;
+}
+
+.container_cards {
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.card_ {
+  width: 350px;
+  height: 450px;
+  /* efeito 3D */
+  /* perspective: 1000px; */
+  margin: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.card_css {
+  width: 100%;
+  height: 100%;
+  transition: 0.8s;
+  /* transform-style: preserve-3d; */
+  position: relative;
+  border-radius: 12px;
+  border: 2px solid #d4af37;
+}
+
+/* imagem escurece */
+.card_:hover .card_frente img {
+  opacity: 0.3;
+  transition: 0.5s;
+}
+
+.card_:hover .card_atras {
+  opacity: 1;
+}
+
+.card_frente,
+.card_atras {
+  /* faz a frente e verso ficar um em cima do outro */
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  /* backface-visibility: hidden; */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card_frente img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+
+.card_frente {
+  /* para ficar um em cima do outro */
+  position: relative;
+}
+
+.card_atras p {
+  font-size: 20px;
+  line-height: 1.5;
+  /* espaçamento entre as linhas */
+  margin: 0;
+  /* max-width: 250px; */
+}
+
+.card_atras h3 {
+  font-size: 24px;
+  justify-content: center;
+  text-shadow: 0 0 5px #ffd700;
+}
+
+
+.p_texto {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.card_atras {
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  /* transform: rotateY(180deg); */
+  top: 0;
+  /* left: 0; */
+  /* quando esta na imagem não aparece o que esta escrito */
+  opacity: 0;
+  text-align: center;
+  /* tempo para escurecer */
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+
+
+/* LOGIN */
+
+.login {
+  height: var(--tamanho-login);
+  background-image: url('../assets/imgs/fundo/fundo_cadastro_login.png');
+  background-size: cover;
+}
+
+.login .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 50%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(255, 255, 255);
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+  color: #ffd700;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #ffd700;
+  text-align: center;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.campo select {
+  border: 2px solid #ffd700;
+  background-color: rgb(208, 207, 207);
+  text-align: center;
+  border-radius: 6px;
+  margin: 0;
+  height: 40px;
+  color: rgb(126, 123, 123);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: black;
+  background-color: #ffd700;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+  border: 3px solid black;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  /* width: 230px; */
+  position: fixed;
+  border-radius: 4px;
+  border: #670505 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(208, 207, 207);
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #ED145B;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}

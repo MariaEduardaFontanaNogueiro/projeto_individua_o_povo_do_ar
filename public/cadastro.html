@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>O Povo do Ar | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="icon" href="../public/assets/icon/logo_sem_fundo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body>
+  <header>
+    <div id="logo">
+      <a href="../index.html"><img id="logo_coroa" src="../assets/icon/logo_sem_fundo.png"></a>
+      <div class="logo_escrito">Entre Espinhos e Coroas</div>
+    </div>
+
+    <div>
+      <a href="cadastro.html">
+        <button class="button">Cadastro</button>
+      </a>
+      <a href="login.html">
+        <button class="button">Login</button>
+      </a>
+    </div>
+  </header>
+
+
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card card-cadastro">
+        <h2>O mundo das fadas aguarda você!</h2>
+        <div class="formulario">
+          <div class="campo">
+            <span>apelido:</span>
+            <input id="apelido_input" type="text" placeholder="Seu apelido" />
+          </div>
+          <div class="campo">
+            <span>E-mail:</span>
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <!-- novo -->
+          <div class="campo">
+            <span>Personagem favorito:</span>
+            <select id="personagem">
+              <option value="">Escolha</option>
+              <option value="1">Jude Duarte</option>
+              <option value="2">Cardan Greenbriar</option>
+              <option value="3">Vivienne Duarte</option>
+              <option value="4">Taryn Duarte</option>
+              <option value="5">Madoc</option>
+              <option value="6">Locke</option>
+              <option value="7">Nicasia</option>
+              <option value="8">Oak</option>
+              <option value="9">Balekin</option>
+              <option value="10">Dain</option>
+              <option value="11">Ghost</option>
+              <option value="12">Roach</option>
+              <option value="13">Bomb</option>
+              <option value="14">Valerian</option>
+              <option value="15">Orlagh</option>
+              <option value="16">Asha</option>
+              <option value="17">Liriope</option>
+            </select>
+
+            <!-- <div>
+            <select id="personagem">
+              <option value="">Escolha um personagem</option>
+            </select>
+            </div> -->
+
+            <!-- <option value="idPersonagem">personagem</option> -->
+            </select>
+          </div>
+
+          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+        </div>
+        <!-- <div id="div_aguardar" class="loading-div">
+          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        </div> -->
+
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <h4>Maria Eduarda Fontana Nogueiro &hearts; 1CCOA &hearts; SPTech &copy; 2026</h4>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  // function buscaPersonagem() {
+  //   fetch("/personagem/listar")
+  //   .then(res => res.json())
+  //   .then(lista => {
+  //     const select = 
+  //   })
+
+
+  //   for (let i = 0; i < array.length; i++) {
+  //     const element = array[i];
+
+  //   }
+
+  // }
+</script>
+
+
+<script>
+
+  function cadastrar() {
+
+    // Agora vá para o método fetch logo abaixo
+    var apelidoVar = apelido_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var personagemVar = personagem.value;
+
+    personagemVar = Number(personagemVar)
+
+    // Verificando se há algum campo em branco
+    if (
+      apelidoVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      personagemVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Complete os campos";
+
+      // finalizarAguardar();
+      return false;
+    } else {
+      // Timeout executa apenas uma vez
+      setTimeout(sumirMensagem, 5000);
+    }
+
+    // validação de senha
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "As senhas não coincidem"
+      return false
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        apelidoServer: apelidoVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        personagemServer: personagemVar
+        // idUsuarioVincularServer: idUsuarioVincular
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+  function limparFormulario() {
+    apelido_input.value = "";
+    email_input.value = "";
+    senha_input.value = "";
+    confirmacao_senha_input.value = "";
+    personagem.value = "";
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

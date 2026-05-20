@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/logo_sem_fundo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Povo do Ar | Tempo Real</title>
+
+    <link rel="stylesheet" href="./../css/quiz.css" />
+
+    <!-- <script src="../js/sessao.js"></script> -->
+    <!-- <script src="../js/alerta.js"></script> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <div class="header-left dash-header">
+
+        <div id="logo">
+            <a href="../index.html"><img id="logo_coroa" src="../assets/icon/logo_sem_fundo.png"></a>
+        </div>
+
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+
+        <div class="btn-nav">
+            <h3>Quiz</h3>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./dashboard.html">
+                <h3>Gráficos</h3>
+            </a>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./mural.html">
+                <h3>Bate-Papo</h3>
+            </a>
+        </div>
+
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+
+    </div>
+
+    <div class="janela">
+
+        <button id="botao_iniciar" onclick="iniciarQuiz()">Iniciar o quiz</button>
+
+
+        <div id="content" style="display: none;">
+
+            <div class="container_quiz">
+
+                <span id="questao_exibida"></span>
+                <div id="opcoes"></div>
+
+                <p id="mensagem"></p>
+
+
+                <button id="botao_submeter" onclick="submeter()" style="display: none;">Responder</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function iniciarQuiz() {
+        // esconde o botão quando quando inicia 
+        document.getElementById("botao_iniciar").style.display = "none";
+        // aparece o botão
+        document.getElementById("botao_submeter").style.display = "block"
+        document.getElementById("content").style.display = "block"
+
+        // começa a mostrar as questões
+        mostrarQuestao()
+    }
+
+    // o ponstos é onde vai armazenar a pontuação do quiz
+    let pontos = {
+        Fada: 0,
+        Elfo: 0,
+        Duende: 0,
+        Humano: 0,
+        Realeza_Feerica: 0
+    };
+
+    let indiceAtual = 0;
+
+    function submeter() {
+        // checked: quando a pessoa marca alguma alternativa o navegador da um checked no input para saber qual foi
+        // a alternativa marcada.
+        // quando eu coloco 'input[name="option"]:checked' peço apenas a opção que está marcada
+        let selecionado = document.querySelector('input[name="option"]:checked');
+
+        // etra aqui se a pessoa não marcou nada
+        if (!selecionado) {
+            mensagem.innerHTML = "Escolha uma opção"
+            return
+        }
+
+        // aqui vai atribuir os pontos para cada tipo
+        let tipo = selecionado.value
+        pontos[tipo]++;
+
+        // vai para a próxima pergunta
+        indiceAtual++;
+
+        if (indiceAtual < listaDeQuestoes.length) {
+            mostrarQuestao()
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function mostrarQuestao() {
+        opcoes.innerHTML = "";
+        mensagem.innerHTML = ""
+
+        document.getElementById("questao_exibida").innerHTML = listaDeQuestoes[indiceAtual].pergunta;
+        console.log(document.getElementById("questao_exibida").innerHTML);
+
+
+        listaDeQuestoes[indiceAtual].opcoes.forEach(opcao => {
+            opcoes.innerHTML += `
+                <label><input type="radio" name="option" value="${opcao.tipo}">${opcao.texto}</label> <br>
+                `
+            console.log(listaDeQuestoes[indiceAtual].opcoes.forEach);
+
+        })
+    }
+
+    const listaDeQuestoes = [
+
+        {
+            pergunta: "1. Em um conflito, você:",
+            opcoes: [
+                { texto: "Usa charme e manipulação", tipo: "Fada" },
+                { texto: "Analisa e cria estratégia", tipo: "Elfo" },
+                { texto: "Faz algo inesperado", tipo: "Duende" },
+                { texto: "Resolve de forma direta", tipo: "Humano" },
+                { texto: "Assume o controle da situação", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "2. O que mais te define?",
+            opcoes: [
+                { texto: "Mistério", tipo: "Fada" },
+                { texto: "Inteligência", tipo: "Elfo" },
+                { texto: "Criatividade caótica", tipo: "Duende" },
+                { texto: "Determinação", tipo: "Humano" },
+                { texto: "Autoridade", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "3. Seu maior defeito:",
+            opcoes: [
+                { texto: "Manipulador(a)", tipo: "Fada" },
+                { texto: "Frio(a) demais", tipo: "Elfo" },
+                { texto: "Impulsivo(a)", tipo: "Duende" },
+                { texto: "Teimoso(a)", tipo: "Humano" },
+                { texto: "Orgulhoso(a)", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "4. Em grupo, você é:",
+            opcoes: [
+                { texto: "Quem influencia os outros", tipo: "Fada" },
+                { texto: "O estrategista", tipo: "Elfo" },
+                { texto: "O imprevisível", tipo: "Duende" },
+                { texto: "O confiável", tipo: "Humano" },
+                { texto: "O líder", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "5. O que você mais valoriza?",
+            opcoes: [
+                { texto: "Poder psicológico", tipo: "Fada" },
+                { texto: "Conhecimento", tipo: "Elfo" },
+                { texto: "Liberdade", tipo: "Duende" },
+                { texto: "Sobrevivência", tipo: "Humano" },
+                { texto: "Poder e status", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "6. Se alguém te trai:",
+            opcoes: [
+                { texto: "Manipula a situação a seu favor", tipo: "Fada" },
+                { texto: "Planeja uma resposta inteligente", tipo: "Elfo" },
+                { texto: "Reage de forma imprevisível", tipo: "Duende" },
+                { texto: "Confronta diretamente", tipo: "Humano" },
+                { texto: "Destrói a pessoa socialmente", tipo: "Realeza_Feerica" }]
+        },
+
+        {
+            pergunta: "7. Seu ambiente ideal:",
+            opcoes: [
+                { texto: "Um lugar mágico e misterioso", tipo: "Fada" },
+                { texto: "Uma biblioteca ou reino antigo", tipo: "Elfo" },
+                { texto: "Um lugar caótico e divertido", tipo: "Duende" },
+                { texto: "Um lugar simples e seguro", tipo: "Humano" },
+                { texto: "Um palácio luxuoso", tipo: "Realeza_Feerica" }]
+        },
+    ]
+
+    function mostrarResultado() {
+        // limpa
+        let resultado = ""
+        let maior = -1
+
+        Object.entries(pontos).forEach(([tipo, valor]) => {
+            // se for maior do que já é substitui os valores
+            if (valor > maior) {
+                maior = valor
+                resultado = tipo
+            }
+        });
+
+        console.log(pontos);
+
+        console.log(resultado);
+
+        // mostra para o usuário quem ele é (teste de personalidade)
+        if (resultado == "Fada") {
+            questao_exibida.innerHTML = "Você é uma Fada encantadora, misteriosa e sempre um passo à frente. Seu poder está na mente e no charme que poucos conseguem resistir.";
+        } else if (resultado == "Elfo") {
+            questao_exibida.innerHTML = "Você é um Elfo inteligente, estratégico e observador. Enquanto outros agem, você já previu o resultado.";
+        } else if (resultado == "Duende") {
+            questao_exibida.innerHTML = "Você é um Duende caótico, criativo e impossível de prever. Sua força está no inesperado.";
+        } else if (resultado == "Humano") {
+            questao_exibida.innerHTML = "Você é um Humano resiliente, determinado e realista. Mesmo sem magia, você nunca desiste.";
+        } else if (resultado == "Realeza_Feerica") {
+            questao_exibida.innerHTML = "Você é da Realeza Feérica poderoso, imponente e feito para liderar. Onde você chega, todos sentem sua presença.";
+        }
+
+        // some com o resto dos textos e botão
+        opcoes.innerHTML = "";
+        document.getElementById("botao_submeter").style.display = "none";
+    }
+
+</script>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.apelido_USUARIO;
+    function exibirAquarios() {
+        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
+            document.getElementById("cardAquarios").innerHTML += `
+                    <div class="card-aquario">
+                        <div class="title-aquario">
+                            <h1>${item.descricao}</h1>
+                        </div>
+                        <div class="desc-aquario">
+                        <div class="temperatura">
+                            <p id="temp_aquario_${item.id}">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_${item.id}"></div>
+                    </div>
+                    </div>
+                    `
+        });
+    }
+
+</script>

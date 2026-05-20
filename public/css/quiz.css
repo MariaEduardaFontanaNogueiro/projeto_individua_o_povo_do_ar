@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.header-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 3px solid;
+    border-image: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37) 1;
+    box-shadow: 0 0 10px #d4af37;
+    background-color: rgb(22, 4, 2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    min-height: 100vh;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_quiz {
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #d4af37;
+    background-color: #000000;
+    color: lch(100% 0.01 296.81);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    height: 300px;
+    width: 350px;
+    font-size: 20px;
+}
+
+#opcoes {
+    color: white;
+}
+
+.btn-nav {
+    width: 40%;
+    color: black;
+    background-color: #ffd700;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2% 5%;
+}
+
+#logo_coroa {
+    height: 80px;
+}
+
+.janela {
+    display: flex;
+    align-items: center;
+    /* background-color: rgb(22, 4, 2); */
+    justify-content: center;
+    width: 80%;
+    margin-left: 20%;
+    height: 100vh;
+    background-image: url('../assets/imgs/fundo/fundo_floresta.jpg');
+    /* para preencher toda a tela */
+    background-size: cover;
+    /* centralizar a imagem */
+    background-position: center;
+}
+
+.header-left a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.header-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 3px solid;
+    border-image: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37) 1;
+    box-shadow: 0 0 10px #d4af37;
+    background-color: rgb(22, 4, 2);
+}
+
+.dash-right {
+    display: flex;
+    width: 70%;
+    height: fit-content;
+    background-color: #161618;
+    position: relative;
+    top: 0;
+    left: 25%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.header-left h1 {
+    color: #ffd700;
+}
+
+.hello {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hello h3 {
+    color: #e3b062;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.hello h3 span {
+    font-weight: 800;
+}
+
+.btn-nav {
+    width: 40%;
+    color: black;
+    background-color: #ffd700;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2% 5%;
+}
+
+.btn-nav-white {
+    width: 40%;
+    background-color: rgb(0, 0, 0);
+    border: 3px solid #ffd700;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2% 5%;
+}
+
+.btn-nav-white h3 {
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-nav h3,
+.btn-logout h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-logout {
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #ffd700;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 3px solid rgb(76, 22, 22);
+    text-align: center;
+    padding: 10px 15px;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
+
+button {
+    width: 90px;
+    height: 30px;
+    border-style: none;
+    background-color: #ffd700;
+    color: rgb(22, 4, 2);
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+  transition: scale(1.3);
+  background-color: #cbb223;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+#botao_iniciar{
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#botao_submeter{
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+#questao_exibida {
+    display: flex;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffd700;
+    width: 100%;
+    /* para alinhar na horizontal */
+    justify-content: center;
+    /* para alinhar na vertical */
+    align-items: center;
+}
+
+#opcoes {
+    padding: 8px 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
