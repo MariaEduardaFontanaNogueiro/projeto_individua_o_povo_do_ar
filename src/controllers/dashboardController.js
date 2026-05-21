@@ -47,6 +47,8 @@ function mostrarRaca_ser(req, res){
     })
 }
 
+
+
 module.exports = {
     buscarPersonagemFavorito,
     buscarRaca,

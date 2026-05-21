@@ -106,6 +106,8 @@
         // a alternativa marcada.
         // quando eu coloco 'input[name="option"]:checked' peço apenas a opção que está marcada
         let selecionado = document.querySelector('input[name="option"]:checked');
+        console.log(pontos);
+        
 
         // etra aqui se a pessoa não marcou nada
         if (!selecionado) {
@@ -143,7 +145,6 @@
 
         })
     }
-
     const listaDeQuestoes = [
 
         {
@@ -217,8 +218,9 @@
         },
     ]
 
-    function mostrarResultado() {
-        // limpa
+    let id_usuario = sessionStorage.ID_USUARIO;
+
+    function mostrarResultado(idUsuario) {
         let resultado = ""
         let maior = -1
 
@@ -231,25 +233,50 @@
         });
 
         console.log(pontos);
-
         console.log(resultado);
+
+        let raca
 
         // mostra para o usuário quem ele é (teste de personalidade)
         if (resultado == "Fada") {
             questao_exibida.innerHTML = "Você é uma Fada encantadora, misteriosa e sempre um passo à frente. Seu poder está na mente e no charme que poucos conseguem resistir.";
+            raca = 1
         } else if (resultado == "Elfo") {
             questao_exibida.innerHTML = "Você é um Elfo inteligente, estratégico e observador. Enquanto outros agem, você já previu o resultado.";
+            raca = 2
         } else if (resultado == "Duende") {
             questao_exibida.innerHTML = "Você é um Duende caótico, criativo e impossível de prever. Sua força está no inesperado.";
+            raca = 3
         } else if (resultado == "Humano") {
             questao_exibida.innerHTML = "Você é um Humano resiliente, determinado e realista. Mesmo sem magia, você nunca desiste.";
+            raca = 4
         } else if (resultado == "Realeza_Feerica") {
             questao_exibida.innerHTML = "Você é da Realeza Feérica poderoso, imponente e feito para liderar. Onde você chega, todos sentem sua presença.";
+            raca = 5
         }
 
         // some com o resto dos textos e botão
         opcoes.innerHTML = "";
         document.getElementById("botao_submeter").style.display = "none";
+
+        
+
+        // enviar para o bd
+        fetch("/quiz/cadastrarraca", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_usuarioServer:id_usuario,
+                racaServer: raca
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log("Cadastrado Com sucesso");
+            })
+            .catch(erro => console.error(erro));
     }
 
 </script>

@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="../public/assets/icon/logo_sem_fundo.png">
+    <link rel="icon" href="../assets/icon/logo_sem_fundo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -56,7 +56,7 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -113,7 +113,7 @@
 
             if (resposta.ok) {
                 // reseta as tentativas para entrar
-                tentativas = 3
+                // tentativas = 3
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -129,24 +129,24 @@
                     }, 1000); // apenas para exibir o loading
 
                 });
-
-            } else {
-                // algoritmo
-                tentativas--;
-
-                if (tentativas != 0) {
-                    alert(`Houve um erro ao tentar realizar o login! Faltam ${tentativas} tentativas!`)
-                    console.log(`Houve um erro ao tentar realizar o login! Faltam ${tentativas} tentativas!`);
-                }
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-
-                if (tentativas <= 0) {
-                    alert("Número de tentativas excedeu, você não pode entrar no mundo das fadas!")
-                }
             }
+            // else {
+            //     // algoritmo
+            //     tentativas--;
+
+            //     if (tentativas != 0) {
+            //         alert(`Houve um erro ao tentar realizar o login! Faltam ${tentativas} tentativas!`)
+            //         console.log(`Houve um erro ao tentar realizar o login! Faltam ${tentativas} tentativas!`);
+            //     }
+            //     resposta.text().then(texto => {
+            //         console.error(texto);
+            //         finalizarAguardar(texto);
+            //     });
+
+            //     if (tentativas <= 0) {
+            //         alert("Número de tentativas excedeu, você não pode entrar no mundo das fadas!")
+            //     }
+            // }
 
         }).catch(function (erro) {
             console.log(erro);

@@ -11,7 +11,7 @@
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="../public/assets/icon/logo_sem_fundo.png">
+  <link rel="icon" href="../assets/icon/logo_sem_fundo.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -113,23 +113,6 @@
 
 </html>
 
-<script>
-  // function buscaPersonagem() {
-  //   fetch("/personagem/listar")
-  //   .then(res => res.json())
-  //   .then(lista => {
-  //     const select = 
-  //   })
-
-
-  //   for (let i = 0; i < array.length; i++) {
-  //     const element = array[i];
-
-  //   }
-
-  // }
-</script>
-
 
 <script>
 
@@ -147,7 +130,7 @@
     // Verificando se há algum campo em branco
     if (
       apelidoVar == "" ||
-      emailVar == "" ||
+      emailVar == "" || 
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
       personagemVar == ""
@@ -158,16 +141,31 @@
 
       // finalizarAguardar();
       return false;
-    } else {
-      // Timeout executa apenas uma vez
-      setTimeout(sumirMensagem, 5000);
     }
-
     // validação de senha
     if (senhaVar != confirmacaoSenhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "As senhas não coincidem"
       return false
+    }
+    if(apelidoVar.length < 4){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Apelido deve ter pelo menos 4 caracteres"
+      return false
+    }
+    if(senhaVar.length < 8){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Senha deve ter pelo menos 8 caracteres"
+      return false
+    }
+    if (!emailVar.includes("@") || !emailVar.includes(".")){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Email inválido"
+      return false
+    }
+    else {
+      // Timeout executa apenas uma vez
+      setTimeout(sumirMensagem, 5000);
     }
 
     // Enviando o valor da nova input

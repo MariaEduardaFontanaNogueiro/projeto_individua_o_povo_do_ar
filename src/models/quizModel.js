@@ -27,17 +27,15 @@ function buscarCriaturas() {
 
 
 // quiz
-function buscarCriaturas(idUsuario, ) {
+function cadastrarraca(idUsuario, fk_raca) {
     var instrucao = `
     INSERT INTO resultado_raca (fkUsuario, fkRaca) VALUES
-        (${idUsuario}, ${});`;
+        (${idUsuario}, ${fk_raca});`;
     return database.executar(instrucao);
 }
 
-
-
-
 module.exports = {
     buscarCriaturas,
-    buscarPersonagens
+    buscarPersonagens,
+    cadastrarraca
 };

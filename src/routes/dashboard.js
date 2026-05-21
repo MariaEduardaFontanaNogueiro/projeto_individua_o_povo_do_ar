@@ -23,8 +23,10 @@ router.get("/Raca_ser/:id_usuario", function (req, res){
         dashboardController.mostrarRaca_ser(req, res)
 });
 
-
-
+// KPI 4
+router.get("/Raca_ser/:id_usuario", function (req, res){
+        dashboardController.mostrarRaca_ser(req, res)
+});
 
 
 

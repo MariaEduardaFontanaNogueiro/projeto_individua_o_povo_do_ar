@@ -91,7 +91,7 @@
 
         <!-- KPI 3 -->
         <div class="KPI">
-            <span id="nomeRaca_ser" class="titulo_KPI">Você é um </span>
+            <span id="nomeRaca_ser" class="titulo_KPI">Complete o quiz! </span>
             <img id="imgRaca_ser" src="" alt="">
             <span class="descricao" id="numero_KPI"></span>
         </div>
@@ -99,7 +99,7 @@
         <!-- KPI 4 -->
         <div class="KPI">
             <span class="titulo_KPI">Mais comentado</span>
-            <img src="../assets/imgs/personagens/dain_frostbite_studios.jpg" alt="">
+            <img src="../assets/imgs/racas/frostbite_studios_fada.jpg" alt="">
 
             <span class="descricao">personagem</span>
             <span class="descricao">89 comentários</span>
@@ -195,21 +195,21 @@
         .catch(erro => console.error("Erro: ", erro));
         };
 
-    //KPI 4 - oq a pessoa é
-    // function oq_e() {
-    //     fetch("/dashboard/Raca_ser")
-    //     .then(res => res.json())
-    //     .then(dados => {
-    //         if(dados.length > 0){
-    //             const raca = dados[0];
+    // KPI 4 - oq a pessoa é
+    function oq_e() {
+        fetch("/dashboard/Raca_ser")
+        .then(res => res.json())
+        .then(dados => {
+            if(dados.length > 0){
+                const raca = dados[0];
 
-    //             document.getElementById("nomeRaca_ser").innerHTML = "Você é um(a) " + raca.nome;
-    //             document.getElementById("imgRaca_ser").src = raca.imgRaca;
-    //             document.getElementById("numero_KPI%").innerHTML = raca.total_ser + "% das pessoas tbm são";
-    //         }
-    //     })
-    //     .catch(erro => console.error("Erro: ", erro));
-    // }
+                document.getElementById("nomeRaca_ser").innerHTML = "Você é um(a) " + raca.nome;
+                document.getElementById("imgRaca_ser").src = raca.imgRaca;
+                document.getElementById("numero_KPI%").innerHTML = raca.total_ser + "% das pessoas tbm são";
+            }
+        })
+        .catch(erro => console.error("Erro: ", erro));
+    }
 
     // montar o grafico
     function criargraficoPersonagem(){
