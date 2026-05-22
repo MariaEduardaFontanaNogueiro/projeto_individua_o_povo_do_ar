@@ -51,6 +51,14 @@ CREATE TABLE resultado_raca (
 	REFERENCES raca(idRaca)
 );
 
+CREATE TABLE bate_papo (
+idBatePapo INT PRIMARY KEY AUTO_INCREMENT,
+titulo VARCHAR(100),
+descricao VARCHAR(150),
+fk_usuario INT,
+FOREIGN KEY (fk_usuario) REFERENCES usuario(idUsuario)
+);
+
 -- ------------------------------------------------------------
 
 INSERT INTO personagem (nome, descricao) VALUES

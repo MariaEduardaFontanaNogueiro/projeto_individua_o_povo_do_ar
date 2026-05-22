@@ -18,6 +18,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var dashboardRouter = require("./src/routes/dashboard");
 var quizRouter = require("./src/routes/quiz")
+var bataPapoRouter = require("./src/routes/bate_papo")
 
 
 // faz que que totas as rotas desse router vão começar com "/quiz"
@@ -30,6 +31,7 @@ app.use("/quiz", quizRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/bate_papo", bataPapoRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <title>AquaTech | Página de Edição</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -20,7 +20,7 @@
 </head>
 
 <body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
-    <!-- <body onload="validarSessao()"> -->
+    <body onload="validarSessao()">
 
     <div class="janela">
 
@@ -53,15 +53,15 @@
                 </a>
             </div>
 
-            <!-- <div class="btn-logout" onclick="limparSessao()">
+            <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
-            </div> -->
+            </div>
 
         </div>
 
         <div class="dash-right">
 
-            <div class="avisos">
+            <div class="bate_papo">
                 <div class="container">
                     <h1>Editar um aviso</h1>
                     <div class="div-form">
@@ -107,7 +107,7 @@
     }
 
     function editar() {
-        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+        fetch(`/bate_papo/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

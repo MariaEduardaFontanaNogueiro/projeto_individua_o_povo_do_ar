@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Povo do Ar | Avisos</title>
+    <title> Povo do Ar | Bate Papo</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -27,7 +27,7 @@
         <div class="header-left">
 
             <div id="logo">
-                 <a href="../index.html"><img id="logo_coroa" src="../assets/icon/logo_sem_fundo.png"></a>
+                <a href="../index.html"><img id="logo_coroa" src="../assets/icon/logo_sem_fundo.png"></a>
             </div>
 
             <div class="hello">
@@ -50,9 +50,9 @@
                 <h3>Bate-Papo</h3>
             </div>
 
-            <!-- <div class="btn-logout" onclick="limparSessao()">
+            <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
-            </div> -->
+            </div>
 
         </div>
 
@@ -69,7 +69,27 @@
                             <label>
                                 Título:
                                 <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
+                                <select name="titulo" id="titulo">
+                                    <option value="">Escolha</option>
+                                    <option value="1">Jude Duarte</option>
+                                    <option value="2">Cardan Greenbriar</option>
+                                    <option value="3">Vivienne Duarte</option>
+                                    <option value="4">Taryn Duarte</option>
+                                    <option value="5">Madoc</option>
+                                    <option value="6">Locke</option>
+                                    <option value="7">Nicasia</option>
+                                    <option value="8">Oak</option>
+                                    <option value="9">Balekin</option>
+                                    <option value="10">Dain</option>
+                                    <option value="11">Ghost</option>
+                                    <option value="12">Roach</option>
+                                    <option value="13">Bomb</option>
+                                    <option value="14">Valerian</option>
+                                    <option value="15">Orlagh</option>
+                                    <option value="16">Asha</option>
+                                    <option value="17">Liriope</option>
+                                </select>
+                                <!-- <input name="titulo" id="titulo" maxlength="100" type="text"> -->
                             </label>
                             <br>
                             <br>
@@ -110,13 +130,15 @@
 
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
+        console.log(sessionStorage.ID_USUARIO);
+
 
         var corpo = {
             titulo: form_postagem.titulo.value,
             descricao: form_postagem.descricao.value
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/bate_papo/publicar/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -155,7 +177,7 @@
 
     function deletar(idAviso) {
         console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
+        fetch(`/bate_papo/deletar/${idAviso}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -176,7 +198,7 @@
     }
 
     function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
+        fetch("/bate_papo/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -205,7 +227,7 @@
                         var btnDeletar = document.createElement("button");
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
@@ -240,7 +262,8 @@
 
                     finalizarAguardar();
                 });
-            } else {
+            }
+            else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
