@@ -6,11 +6,12 @@
     left: 0;
     z-index: 999;
     height: 100vh;
-    width: 20%;
+    width: 290px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding: 20px 10px;
     border-right: 3px solid;
     border-image: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37) 1;
     box-shadow: 0 0 10px #d4af37;
@@ -61,17 +62,19 @@ body {
     padding: 2% 5%;
 }
 
-#logo_coroa {
-    height: 80px;
+#logo_coroa_ {
+    height: 130px;
+    margin-bottom: -49px;
 }
 
 .janela {
+    margin-left: 260px;
+    width:  calc(100% - 290px);
+    height: 100vh;
     display: flex;
     align-items: center;
     /* background-color: rgb(22, 4, 2); */
     justify-content: center;
-    width: 80%;
-    margin-left: 20%;
     height: 100vh;
     background-image: url('../assets/imgs/fundo/fundo_floresta.jpg');
     /* para preencher toda a tela */
@@ -85,33 +88,15 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.header-left {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    height: 100vh;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    border-right: 3px solid;
-    border-image: linear-gradient(45deg, #d4af37, #fff2a8, #d4af37) 1;
-    box-shadow: 0 0 10px #d4af37;
-    background-color: rgb(22, 4, 2);
-}
-
 .dash-right {
-    display: flex;
-    width: 70%;
-    height: fit-content;
-    background-color: #161618;
-    position: relative;
-    top: 0;
-    left: 25%;
-    height: 100vh;
-    overflow: auto;
+  display: flex;
+  width: calc(100% - 290px);
+  height: 100vh;
+  background-color: #161618;
+  position: relative;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
 }
 
 .header-left h1 {
@@ -134,22 +119,22 @@ body {
     font-weight: 800;
 }
 
+.btn-nav, .btn-nav-white{
+  width:  50%;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .btn-nav {
-    width: 40%;
-    color: black;
-    background-color: #ffd700;
-    border-radius: 5px;
-    text-align: center;
-    padding: 2% 5%;
+  color: black;
+  background-color: #ffd700;
 }
 
 .btn-nav-white {
-    width: 40%;
-    background-color: rgb(0, 0, 0);
-    border: 3px solid #ffd700;
-    border-radius: 5px;
-    text-align: center;
-    padding: 2% 5%;
+  background-color: rgb(0, 0, 0);
+  border: 3px solid #ffd700;
 }
 
 .btn-nav-white h3 {
@@ -165,17 +150,14 @@ body {
 }
 
 .btn-logout {
-    margin: 0;
-    padding: 0;
-    width: 20%;
-    background-color: #ffd700;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    border: 3px solid rgb(76, 22, 22);
-    text-align: center;
-    padding: 10px 15px;
-    margin-bottom: 100px;
-    cursor: pointer;
+  width: 40%;
+  background-color: #ffd700;
+  color: black;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
 }
 
 button {
