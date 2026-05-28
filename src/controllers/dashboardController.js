@@ -32,7 +32,7 @@ function buscarRaca(req, res){
 
 // KPI 3
 function mostrarRaca_ser(req, res){
-    // params: buscar por ID
+                     // params: buscar por ID
     var idUsuario = req.params.id_usuario;
 
     dashboardModel.mostrarRaca_ser(idUsuario)
@@ -47,10 +47,25 @@ function mostrarRaca_ser(req, res){
     })
 }
 
+// KPI 4
+function comentario_personagem(req, res){
+
+    dashboardModel.comentario_personagem()
+    .then(resultado => {
+        // entrega os dados em formato de JSON
+        res.json(resultado);
+    })
+    // se der erro
+    .catch(erro => {
+        console.error(erro);
+        res.status(500).json(erro);
+    })
+}
 
 
 module.exports = {
     buscarPersonagemFavorito,
     buscarRaca,
-    mostrarRaca_ser
+    mostrarRaca_ser,
+    comentario_personagem
 } 

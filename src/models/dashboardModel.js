@@ -23,8 +23,7 @@ function buscarPersonagemFavorito() {
 function buscarRaca() {
     var instrucaoSQL = `
     SELECT 
-    r.nome, 
-    r.descricao, 
+    r.nome,
     r.imgRaca, 
     COUNT(rr.fkRaca) AS total_escolhas
     FROM resultado_raca rr
@@ -61,9 +60,29 @@ function mostrarRaca_ser(idUsuario) {
     return database.executar(instrucaoSQL)
 }
 
+// KPI 4
+function comentario_personagem() {
+    var instrucaoSQL = `
+    SELECT 
+    p.nome AS personagem_comentado,
+    p.imgPersonagem AS img_comentado,
+    ROUND(COUNT(*) * 100 / total.total_comentarios) AS porcentagem
+    FROM bate_papo bp
+    JOIN personagem p ON bp.fkPersonagem = p.idPersonagem
+    JOIN (
+    SELECT COUNT(*) AS total_comentarios 
+    FROM bate_papo
+    ) AS total
+    GROUP BY p.idPersonagem, p.nome, p.imgPersonagem, total.total_comentarios
+    ORDER BY COUNT(*) DESC
+    LIMIT 1;
+    `;
+    return database.executar(instrucaoSQL)
+}
 
 module.exports = {
     buscarPersonagemFavorito,
     buscarRaca,
-    mostrarRaca_ser
+    mostrarRaca_ser,
+    comentario_personagem
 }
