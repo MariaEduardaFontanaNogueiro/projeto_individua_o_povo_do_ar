@@ -7,13 +7,13 @@ function listar() {
             bp.idBatePapo as idAviso,
             p.nome as titulo,
             bp.descricao,
-            bp.fk_usuario,
+            bp.fkUsuario,
             u.idUsuario,
             u.apelido as nome,
             u.email,
             u.senha
         FROM bate_papo bp
-            JOIN usuario u ON bp.fk_usuario = u.idUsuario
+            JOIN usuario u ON bp.fkUsuario = u.idUsuario
             JOIN personagem p ON bp.fkPersonagem = p.idPersonagem
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -27,13 +27,13 @@ function pesquisarDescricao(texto) {
             bp.idBatePapo as idAviso,
             p.nome as titulo,
             bp.descricao,
-            bp.fk_usuario,
+            bp.fkUsuario,
             u.idUsuario,
             u.apelido as nome,
             u.email,
             u.senha
         FROM bate_papo bp
-            JOIN usuario u ON bp.fk_usuario = u.idUsuario
+            JOIN usuario u ON bp.fkUsuario = u.idUsuario
             JOIN personagem p ON bp.fkPersonagem = p.idPersonagem
         WHERE bp.descricao LIKE '${texto}';
     `;
@@ -48,14 +48,14 @@ function listarPorUsuario(idUsuario) {
             bp.idBatePapo as idAviso,
             r.nome as titulo,
             bp.descricao,
-            bp.fk_usuario,
+            bp.fkUsuario,
             u.idUsuario,
             u.apelido as nome,
             u.email,
             u.senha
         FROM bate_papo bp
             JOIN raca r ON bp.fkRaca = r.idRaca
-            JOIN usuario u ON bp.fk_usuario = u.idUsuario
+            JOIN usuario u ON bp.fkUsuario = u.idUsuario
         WHERE u.idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -65,7 +65,7 @@ function listarPorUsuario(idUsuario) {
 function publicar(titulo, descricao, idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucaoSql = `
-        INSERT INTO bate_papo (fkPersonagem, descricao, fk_usuario) VALUES 
+        INSERT INTO bate_papo (fkPersonagem, descricao, fkUsuario) VALUES 
         ('${titulo}', '${descricao}', ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

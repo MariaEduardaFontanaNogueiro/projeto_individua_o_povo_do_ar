@@ -9,9 +9,6 @@
     <title>O Povo do Ar | Tempo Real</title>
 
     <link rel="stylesheet" href="./../css/quiz.css" />
-
-    <!-- <script src="../js/sessao.js"></script> -->
-    <!-- <script src="../js/alerta.js"></script> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -125,7 +122,7 @@
         document.getElementById("questao_exibida").innerHTML = listaDeQuestoes[indiceAtual].pergunta;
         console.log(document.getElementById("questao_exibida").innerHTML);
 
-
+                                                        // para cada
         listaDeQuestoes[indiceAtual].opcoes.forEach(opcao => {
             opcoes.innerHTML += `
                 <label><input type="radio" name="option" value="${opcao.tipo}">${opcao.texto}</label> <br>
@@ -135,7 +132,6 @@
         })
     }
     const listaDeQuestoes = [
-
         {
             pergunta: "1. Em um conflito, você:",
             opcoes: [
@@ -145,7 +141,6 @@
                 { texto: "Resolve de forma direta", tipo: "Humano" },
                 { texto: "Assume o controle da situação", tipo: "Realeza_Feerica" }]
         },
-
         {
             pergunta: "2. O que mais te define?",
             opcoes: [
@@ -155,7 +150,6 @@
                 { texto: "Determinação", tipo: "Humano" },
                 { texto: "Autoridade", tipo: "Realeza_Feerica" }]
         },
-
         {
             pergunta: "3. Seu maior defeito:",
             opcoes: [
@@ -165,7 +159,6 @@
                 { texto: "Teimoso(a)", tipo: "Humano" },
                 { texto: "Orgulhoso(a)", tipo: "Realeza_Feerica" }]
         },
-
         {
             pergunta: "4. Em grupo, você é:",
             opcoes: [
@@ -227,7 +220,7 @@
         });
 
         let tipoFinal = resultado.tipo
-
+        
         let textoResultado = ""
 
         // mostra para o usuário quem ele é (teste de personalidade)
